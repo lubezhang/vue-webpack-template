@@ -13,9 +13,6 @@ export default {
     name: 'app',
     components: {
         Hello
-    },
-    mounted() {
-        
     }
 };
 </script>
