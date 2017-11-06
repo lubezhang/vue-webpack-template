@@ -1,4 +1,5 @@
 const ora = require('ora');
+const opn = require('opn')
 const path = require('path');
 const chalk = require('chalk');
 const webpack = require('webpack');
@@ -35,3 +36,5 @@ var server = new WebpackDevServer(compiler, {
     publicPath: "/dist",
 });
 server.listen(8080);
+
+opn("http://localhost:8080")
