@@ -12,7 +12,7 @@ const webpackConfig = merge(webpackBaseConfig, {
     },
     plugins: [
         new webpack.DefinePlugin({
-            "process.env": {
+            'process.env': {
                 NODE_ENV: '"production"'
             }
         }),
@@ -25,12 +25,11 @@ const webpackConfig = merge(webpackBaseConfig, {
     ]
 });
 
-
 var spinner = ora('building for production...');
 spinner.start();
 
 webpack(webpackConfig, function (err, stats) {
-    if(err) {
+    if (err) {
         spinner.fail(chalk.red(err));
     } else {
         spinner.succeed(chalk.green('  Build complete.'));
@@ -44,8 +43,8 @@ webpack(webpackConfig, function (err, stats) {
         }) + '\n\n');
 
         if (stats.hasErrors()) {
-            console.log(chalk.red('  Build failed with errors.\n'))
-            process.exit(1)
+            console.log(chalk.red('  Build failed with errors.\n'));
+            process.exit(1);
         }
     }
-})
+});

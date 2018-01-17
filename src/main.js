@@ -7,7 +7,7 @@ import App from './App';
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#content',
-  template: '<App/>',
-  components: { App },
+    el: '#content',
+    template: '<App/>',
+    components: { App }
 });

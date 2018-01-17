@@ -1,13 +1,10 @@
-const ora = require('ora');
-const opn = require('opn')
-const path = require('path');
-const chalk = require('chalk');
+const opn = require('opn');
 const webpack = require('webpack');
-const WebpackDevServer = require("webpack-dev-server");
+const WebpackDevServer = require('webpack-dev-server');
 const merge = require('webpack-merge');
 var webpackBaseConfig = require('./webpack.base.config.js');
 
-webpackBaseConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
+webpackBaseConfig.entry.app.unshift('webpack-dev-server/client?http://localhost:8080/', 'webpack/hot/dev-server');
 
 const webpackConfig = merge(webpackBaseConfig, {
     devtool: '#cheap-module-eval-source-map',
@@ -18,7 +15,7 @@ const webpackConfig = merge(webpackBaseConfig, {
     },
     plugins: [
         new webpack.DefinePlugin({
-            "process.env": {
+            'process.env': {
                 NODE_ENV: '"development"'
             }
         }),
@@ -33,8 +30,8 @@ var server = new WebpackDevServer(compiler, {
     quiet: false,
     inline: true,
     stats: { colors: true },
-    publicPath: "/dist",
+    publicPath: '/dist'
 });
 server.listen(8080);
 
-opn("http://localhost:8080")
+opn('http://localhost:8080');
