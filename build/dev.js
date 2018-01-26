@@ -4,7 +4,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const merge = require('webpack-merge');
 var webpackBaseConfig = require('./webpack.base.config.js');
 
-webpackBaseConfig.entry.app.unshift('webpack-dev-server/client?http://localhost:8080/', 'webpack/hot/dev-server');
+webpackBaseConfig.entry.app.unshift('webpack-dev-server/client?http://localhost:55555/', 'webpack/hot/dev-server');
 
 const webpackConfig = merge(webpackBaseConfig, {
     devtool: '#cheap-module-eval-source-map',
@@ -32,6 +32,6 @@ var server = new WebpackDevServer(compiler, {
     stats: { colors: true },
     publicPath: '/dist'
 });
-server.listen(8080);
+server.listen(55555);
 
-opn('http://localhost:8080');
+opn('http://localhost:55555');
