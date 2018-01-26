@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const ora = require('ora');
 const chalk = require('chalk');
 const merge = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpackBaseConfig = require('./webpack.base.config.js');
 
 const webpackConfig = merge(webpackBaseConfig, {
@@ -21,6 +22,18 @@ const webpackConfig = merge(webpackBaseConfig, {
                 warnings: false
             },
             sourceMap: true
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'index.html',
+            inject: true,
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true
+                // more options:
+            },
+            chunksSortMode: 'dependency'
         })
     ]
 });

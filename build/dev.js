@@ -2,6 +2,7 @@ const opn = require('opn');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const merge = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpackBaseConfig = require('./webpack.base.config.js');
 
 webpackBaseConfig.entry.app.unshift('webpack-dev-server/client?http://localhost:55555/', 'webpack/hot/dev-server');
@@ -19,7 +20,12 @@ const webpackConfig = merge(webpackBaseConfig, {
                 NODE_ENV: '"development"'
             }
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'index.html',
+            inject: true
+        })
     ]
 });
 
@@ -34,4 +40,4 @@ var server = new WebpackDevServer(compiler, {
 });
 server.listen(55555);
 
-opn('http://localhost:55555');
+opn('http://localhost:55555/dist/index.html');
